@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Readify - Feedback</title>
+<style>
+    /* General Styling */
+    body {
+        font-family: 'Verdana', sans-serif;
+        background: linear-gradient(to bottom, #FFEEE4, #B6D7FF); /* Soft peach to blue gradient */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Ensure full height layout */
+    }
+
+    header {
+        background-color: #4A3F8B; /* Deep purple */
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+
+    nav {
+        background-color: #5E45A8; /* Mid purple */
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        background-color: #7C69D5; /* Lighter purple on hover */
+        border-radius: 5px;
+    }
+
+    main {
+        flex: 1; /* Allows main content to stretch, pushing the footer to the bottom */
+        padding: 20px;
+    }
+
+    section {
+        margin: auto;
+        max-width: 600px;
+        background-color: #FFFFFF; /* White background */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    section h2 {
+        color: #4A3F8B; /* Deep purple */
+        margin-bottom: 20px;
+    }
+
+    .feedback-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4A3F8B; /* Deep purple */
+        color: white;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    .feedback-link:hover {
+        background-color: #5E45A8; /* Mid purple on hover */
+    }
+
+    footer {
+        background-color: #4A3F8B; /* Deep purple */
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: auto; /* Ensures footer stays at the bottom */
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Feedback - Readify</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="about.html">About</a> |
+        <a href="books.html">Books</a> |
+        <a href="team.html">Our Team</a> |
+        <a href="feedback.html">Feedback</a>
+    </nav>
+    <main>
+        <section>
+            <h2>We Value Your Feedback</h2>
+            <p>Your feedback helps us improve and provide a better experience for our readers. Click the button below to share your thoughts with us.</p>
+            <a class="feedback-link" href="https://forms.gle/iFMcjea5RfQZhmwF7" target="_blank">Give Feedback</a>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Readify - Empowering Minds Through Books</p>
+    </footer>
+</body>
+</html>

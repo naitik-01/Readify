@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Readify - Your Book Haven</title>
+<style>
+    body {
+        font-family: 'Verdana', sans-serif;
+        background: linear-gradient(to bottom, #B2E0E0, #E3C9FF); /* Gradient teal to lavender */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    header {
+        background-color: #4A3F8B; /* Deep purple */
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        position: relative;
+    }
+    header img {
+        position: absolute;
+        left: 20px;
+        top: 15px;
+        width: 100px;
+        height: 100px;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+    header p {
+        font-style: italic;
+        font-size: 1.2em;
+    }
+    nav {
+        background-color: #5E45A8; /* Mid purple */
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        font-weight: bold;
+    }
+    nav a:hover {
+        background-color: #7C69D5; /* Lighter purple on hover */
+        border-radius: 5px;
+    }
+    main {
+        padding: 20px;
+    }
+    section {
+        margin-bottom: 30px;
+        background-color: #F5F0FF; /* Soft lavender background for sections */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .team {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    .team-member {
+        text-align: center;
+    }
+    .team-member img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        border: 3px solid #7C69D5; /* Purple border */
+    }
+    .map-contact-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .contact-form, .map-section {
+        flex: 1;
+        min-width: 300px;
+    }
+    .contact-form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .contact-form h2 {
+        margin-top: 0;
+    }
+    .contact-form label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+    .contact-form input, .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .contact-form textarea {
+        resize: vertical;
+        height: 100px;
+    }
+    .contact-form button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #4A3F8B; /* Deep purple */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .contact-form button:hover {
+        background-color: #5E45A8; /* Mid purple on hover */
+    }
+    .map-section img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+    footer {
+        background-color: #4A3F8B; /* Deep purple */
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+</style>
+<script>
+    let currentImageIndex = 0;
+    const images = [
+        "Good-book.jpg",
+        "https://i0.wp.com/caroleknits.net/wp-content/uploads/2022/04/the-only-thing-that-you-absolutely-have-to-know-is-the-location-of-the-library-quote-1.jpg?fit=600%2C800&ssl=1",
+        "https://ih1.redbubble.net/image.2954564414.7956/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+        "https://www.rd.com/wp-content/uploads/2024/09/Quotes-About-Reading-Thatll-Inspire-You-to-Open-a-Book_GettyImages-1700683583_ASedit_FT.jpg",
+        "https://images.ctfassets.net/qpn1gztbusu2/7qGg3DzvrvVTwc1XZKhAXM/1682fcd18fc4bd60035a49df710348b6/quote-4-2.png?fm=jpg&w=3840&q=70",
+        "https://bookbub-res.cloudinary.com/image/upload/f_auto,q_auto/v1584456073/blog/quotes-about-books-2-Cooley.jpg",
+        "https://hips.hearstapps.com/hmg-prod/images/paul-sweeney-book-quote-1531936023.jpg",
+        "https://www.rd.com/wp-content/uploads/2021/05/books_quote3.jpg?fit=680%2C680"
+    ];
+
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        document.getElementById("quoteImage").src = images[currentImageIndex];
+    }
+
+    function showConfirmation(event) {
+        event.preventDefault();
+        alert("Thank you for reaching out to Readify. Your message has been sent.");
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("query").value = "";
+    }
+</script>
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" alt="Readify Logo">
+        <h1>Readify</h1>
+        <p>Read, Imagine, Inspire</p>
+    </header>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="about.html">About</a> |
+        <a href="books.html">Books</a> |
+        <a href="team.html">Our Team</a> |
+        <a href="feedback.html">Feedback</a>
+    </nav>
+    <main>
+        <section id="home">
+            <h2>Welcome to Readify</h2>
+            <p>Welcome to Readify, where stories come alive.</p>
+            <p>Get lost in the pages with Readify, your ultimate book destination.</p>
+        </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>At Readify, we're passionate about igniting a love for reading in every individual. Join us on this literary journey, and get ready to Readify your mind!</p>
+        </section>
+        <section id="vision">
+            <h2>Our Vision</h2>
+            <p>To create a global community of readers, connecting through shared stories and fostering empathy worldwide.</p>
+        </section>
+        <section id="team">
+            <h2>Our Team</h2>
+            <div class="team">
+                <div class="team-member">
+                    <img src="IMG_20240907_130342221_HDR_AE (1).jpg" alt="Team Member 1">
+                    <p>Naitik Kumar</p>
+                </div>
+                <div class="team-member">
+                    <img src="IMG-20241204-WA0017.jpg" alt="Team Member 2">
+                    <p>Muskan Gupta</p>
+                </div>
+            </div>
+        </section>
+        <section id="map-contact" class="map-contact-section">
+            <div class="contact-form">
+                <h2>Contact Us</h2>
+                <form onsubmit="showConfirmation(event)">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" required>
+                    <label for="query">Message:</label>
+                    <textarea id="query" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            <div class="map-section">
+                <h2>Quote for Today</h2>
+                <img id="quoteImage" src="Good-book.jpg" alt="Book Quote" onclick="showNextImage()">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Readify - Empowering Minds Through Books</p>
+    </footer>
+</body>
+</html>   
