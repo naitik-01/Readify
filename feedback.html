@@ -1,119 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Readify - Feedback</title>
-<style>
-    /* General Styling */
-    body {
-        font-family: 'Verdana', sans-serif;
-        background: linear-gradient(to bottom, #FFEEE4, #B6D7FF); /* Soft peach to blue gradient */
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh; /* Ensure full height layout */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Readify</title>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+       // Initialize EmailJS with your Public Key
+       (function(){
+          emailjs.init("hW7t7_gUutUcCzFQf"); 
+       })();
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
 
-    header {
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        text-align: center;
-        padding: 20px 0;
-    }
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1E1E1E;
+            --primary-color: #BB86FC;
+            --secondary-color: #03DAC6;
+            --on-surface-color: #FFFFFF;
+            --on-surface-muted: #A0A0A0;
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+        }
 
-    header h1 {
-        margin: 0;
-        font-size: 2.5em;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    nav {
-        background-color: #5E45A8; /* Mid purple */
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-    }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--on-surface-color);
+            overflow-x: hidden;
+        }
 
-    nav a {
-        color: white;
-        text-decoration: none;
-        padding: 10px 15px;
-        font-weight: bold;
-    }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    nav a:hover {
-        background-color: #7C69D5; /* Lighter purple on hover */
-        border-radius: 5px;
-    }
+        /* Header & Navigation */
+        header {
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    main {
-        flex: 1; /* Allows main content to stretch, pushing the footer to the bottom */
-        padding: 20px;
-    }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    section {
-        margin: auto;
-        max-width: 600px;
-        background-color: #FFFFFF; /* White background */
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--on-surface-color);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--primary-color);
+        }
 
-    section h2 {
-        color: #4A3F8B; /* Deep purple */
-        margin-bottom: 20px;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
 
-    .feedback-link {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        font-size: 1.2em;
-        font-weight: bold;
-        text-decoration: none;
-        border-radius: 5px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s ease;
-    }
+        nav ul li {
+            margin-left: 30px;
+        }
 
-    .feedback-link:hover {
-        background-color: #5E45A8; /* Mid purple on hover */
-    }
+        nav ul li a {
+            color: var(--on-surface-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
 
-    footer {
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        margin-top: auto; /* Ensures footer stays at the bottom */
-    }
-</style>
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--on-surface-color);
+        }
+        
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 80px 20px;
+            text-align: center;
+            background: var(--surface-color);
+        }
+
+        .page-header h1 {
+            font-family: 'Lora', serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--on-surface-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Feedback Section */
+        .feedback-section {
+            padding: 80px 0;
+        }
+
+        .feedback-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--surface-color);
+            padding: 50px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feedback-form-container h2 {
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feedback-form-container .subtitle {
+            text-align: center;
+            color: var(--on-surface-muted);
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--on-surface-muted);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            color: var(--on-surface-color);
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 150px;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(187, 134, 252, 0.3);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+            box-shadow: 0 6px 20px rgba(3, 218, 198, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background-color: var(--on-surface-muted);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        /* Status Message */
+        #status-message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none; /* Hidden by default */
+            font-weight: 500;
+        }
+        #status-message.success {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: var(--success-color);
+            display: block;
+        }
+        #status-message.error {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: var(--error-color);
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-color);
+            color: var(--on-surface-muted);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <h1>Feedback - Readify</h1>
+        <div class="container">
+            <a href="index.html" class="logo">Readify<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="creator.html">Creator</a></li>
+                    <li><a href="feedback.html" class="active">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="books.html">Books</a> |
-        <a href="team.html">Our Team</a> |
-        <a href="feedback.html">Feedback</a>
-    </nav>
+
     <main>
-        <section>
-            <h2>We Value Your Feedback</h2>
-            <p>Your feedback helps us improve and provide a better experience for our readers. Click the button below to share your thoughts with us.</p>
-            <a class="feedback-link" href="https://forms.gle/iFMcjea5RfQZhmwF7" target="_blank">Give Feedback</a>
+        <section class="page-header">
+            <h1>Share Your Thoughts</h1>
+            <p>Your voice matters. Help us shape the future of Readify.</p>
+        </section>
+
+        <section class="feedback-section">
+            <div class="container">
+                <div class="feedback-form-container">
+                    <h2>Get In Touch</h2>
+                    <p class="subtitle">We'd love to hear from you. Whether it's a question, a suggestion, or a bug report, drop us a line!</p>
+                    <form id="feedback-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="from_name" required placeholder="e.g., Jane Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="from_email" required placeholder="e.g., jane.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="e.g., Book Suggestion">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required placeholder="Tell us what's on your mind..."></textarea>
+                        </div>
+                        <button type="submit" id="submit-button" class="submit-btn">Send Message</button>
+                    </form>
+                    <div id="status-message"></div>
+                </div>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>© 2024 Readify - Empowering Minds Through Books</p>
+        <div class="container">
+            <p>&copy; 2024 Readify. Designed & Developed with passion by Naitik.</p>
+        </div>
     </footer>
+
+    <script>
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const form = this;
+            const submitButton = document.getElementById('submit-button');
+            const statusMessage = document.getElementById('status-message');
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            statusMessage.style.display = 'none';
+
+            // Your EmailJS Service & Template IDs
+            const serviceID = 'service_hvttmz9'; 
+            const templateID = 'template_geuwab8';
+
+            emailjs.sendForm(serviceID, templateID, form)
+                .then((res) => {
+                    console.log('SUCCESS!', res.status, res.text); // Added for debugging
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+                    statusMessage.textContent = 'Thank you! Your message has been sent successfully.';
+                    statusMessage.className = 'success';
+                    form.reset();
+                }, (err) => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+                    statusMessage.textContent = 'Oops! Something went wrong. Please try again.';
+                    statusMessage.className = 'error';
+                    console.error('EmailJS Error:', JSON.stringify(err));
+                });
+        });
+    </script>
+
 </body>
 </html>

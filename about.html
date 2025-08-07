@@ -1,96 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Readify - About Us</title>
-<style>
-    body {
-        font-family: 'Verdana', sans-serif;
-        background: linear-gradient(to bottom, #FFDEE9, #B5FFFC); /* Pink to teal gradient */
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    header {
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        text-align: center;
-        padding: 20px 0;
-    }
-    header h1 {
-        margin: 0;
-        font-size: 2.5em;
-    }
-    nav {
-        background-color: #5E45A8; /* Mid purple */
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-    }
-    nav a {
-        color: white;
-        text-decoration: none;
-        padding: 10px 15px;
-        font-weight: bold;
-    }
-    nav a:hover {
-        background-color: #7C69D5; /* Lighter purple on hover */
-        border-radius: 5px;
-    }
-    main {
-        padding: 20px;
-    }
-    section {
-        margin-bottom: 30px;
-        background-color: #FFFFFF; /* White background for sections */
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    section h2 {
-        margin-top: 0;
-        color: #4A3F8B; /* Deep purple */
-    }
-    footer {
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Readify</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
+
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1E1E1E;
+            --primary-color: #BB86FC;
+            --secondary-color: #03DAC6;
+            --on-surface-color: #FFFFFF;
+            --on-surface-muted: #A0A0A0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--on-surface-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--on-surface-color);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--on-surface-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--on-surface-color);
+        }
+        
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* Page Title Section */
+        .page-header {
+            padding: 80px 20px;
+            text-align: center;
+            background: var(--surface-color);
+        }
+
+        .page-header h1 {
+            font-family: 'Lora', serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--on-surface-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Section */
+        .about-section {
+            padding: 100px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .about-text h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text h2 span {
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: var(--on-surface-muted);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-color);
+            color: var(--on-surface-muted);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image {
+                order: -1;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>About Us - Readify</h1>
+        <div class="container">
+            <a href="index.html" class="logo">Readify<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="creator.html">Creator</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="books.html">Books</a> |
-        <a href="team.html">Our Team</a> |
-        <a href="feedback.html">Feedback</a>
-    </nav>
+
     <main>
-        <section>
-            <h2>Why Reading Books is Important</h2>
-            <p>Books are a gateway to knowledge, creativity, and emotional growth. Reading offers countless benefits that can positively impact your life in profound ways:</p>
-            <ul>
-                <li><strong>Enhances Knowledge:</strong> Books provide a wealth of information, helping you learn about new cultures, ideas, and perspectives.</li>
-                <li><strong>Boosts Brain Power:</strong> Regular reading strengthens neural connections, improving memory, focus, and analytical skills.</li>
-                <li><strong>Improves Vocabulary:</strong> Exposure to diverse texts enhances your language skills and communication abilities.</li>
-                <li><strong>Reduces Stress:</strong> Reading can be a great escape from the stresses of daily life, promoting relaxation and mindfulness.</li>
-                <li><strong>Fosters Empathy:</strong> By stepping into the shoes of fictional characters, readers develop a deeper understanding of human emotions and relationships.</li>
-                <li><strong>Stimulates Creativity:</strong> Stories ignite your imagination, encouraging you to think outside the box and dream big.</li>
-            </ul>
+        <section class="page-header">
+            <h1>About Readify</h1>
+            <p>Discover the philosophy and passion that drive our digital library.</p>
         </section>
-        <section>
-            <h2>Our Mission</h2>
-            <p>At Readify, we aim to create a world where reading is a cherished habit for everyone. By connecting people to the magic of books, we hope to inspire a lifelong love for learning and storytelling.</p>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2>Our Mission<span>:</span> To Universalize Wisdom</h2>
+                        <p>Readify was born from a simple yet powerful idea: to make literature accessible to everyone, everywhere. In a world of endless digital distractions, we believe in the timeless power of books to inspire, educate, and transform lives.</p>
+                        <p>Our mission is to provide a serene, user-friendly space where readers can immerse themselves in a curated collection of the world's greatest stories and ideas, completely free of charge.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2107&auto=format&fit=crop" alt="A beautiful library">
+                    </div>
+                </div>
+                <div class="about-grid" style="margin-top: 100px;">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=2070&auto=format&fit=crop" alt="A person reading a book">
+                    </div>
+                    <div class="about-text">
+                        <h2>The Power of a <span>Page</span></h2>
+                        <p>Reading is more than just a hobby; it's an exercise for the mind. It enhances knowledge, sharpens critical thinking, and builds empathy by allowing us to walk in others' shoes.</p>
+                        <p>Every book is a new world waiting to be explored, a new perspective waiting to be understood. At Readify, we are committed to fostering a global community of curious minds connected by the shared joy of reading.</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>© 2024 Readify - Empowering Minds Through Books</p>
+        <div class="container">
+            <p>&copy; 2024 Readify. Designed & Developed with passion by Naitik.</p>
+        </div>
     </footer>
 </body>
 </html>

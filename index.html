@@ -1,228 +1,623 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Readify - Your Book Haven</title>
-<style>
-    body {
-        font-family: 'Verdana', sans-serif;
-        background: linear-gradient(to bottom, #B2E0E0, #E3C9FF); /* Gradient teal to lavender */
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    header {
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        text-align: center;
-        padding: 20px 0;
-        position: relative;
-    }
-    header img {
-        position: absolute;
-        left: 20px;
-        top: 15px;
-        width: 100px;
-        height: 100px;
-    }
-    header h1 {
-        margin: 0;
-        font-size: 2.5em;
-    }
-    header p {
-        font-style: italic;
-        font-size: 1.2em;
-    }
-    nav {
-        background-color: #5E45A8; /* Mid purple */
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-    }
-    nav a {
-        color: white;
-        text-decoration: none;
-        padding: 10px 15px;
-        font-weight: bold;
-    }
-    nav a:hover {
-        background-color: #7C69D5; /* Lighter purple on hover */
-        border-radius: 5px;
-    }
-    main {
-        padding: 20px;
-    }
-    section {
-        margin-bottom: 30px;
-        background-color: #F5F0FF; /* Soft lavender background for sections */
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .team {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 20px;
-    }
-    .team-member {
-        text-align: center;
-    }
-    .team-member img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-bottom: 10px;
-        border: 3px solid #7C69D5; /* Purple border */
-    }
-    .map-contact-section {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-    .contact-form, .map-section {
-        flex: 1;
-        min-width: 300px;
-    }
-    .contact-form {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .contact-form h2 {
-        margin-top: 0;
-    }
-    .contact-form label {
-        display: block;
-        margin: 10px 0 5px;
-    }
-    .contact-form input, .contact-form textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-    .contact-form textarea {
-        resize: vertical;
-        height: 100px;
-    }
-    .contact-form button {
-        margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    .contact-form button:hover {
-        background-color: #5E45A8; /* Mid purple on hover */
-    }
-    .map-section img {
-        width: 100%;
-        border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-    }
-    footer {
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-    }
-</style>
-<script>
-    let currentImageIndex = 0;
-    const images = [
-        "Good-book.jpg",
-        "https://i0.wp.com/caroleknits.net/wp-content/uploads/2022/04/the-only-thing-that-you-absolutely-have-to-know-is-the-location-of-the-library-quote-1.jpg?fit=600%2C800&ssl=1",
-        "https://ih1.redbubble.net/image.2954564414.7956/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
-        "https://www.rd.com/wp-content/uploads/2024/09/Quotes-About-Reading-Thatll-Inspire-You-to-Open-a-Book_GettyImages-1700683583_ASedit_FT.jpg",
-        "https://images.ctfassets.net/qpn1gztbusu2/7qGg3DzvrvVTwc1XZKhAXM/1682fcd18fc4bd60035a49df710348b6/quote-4-2.png?fm=jpg&w=3840&q=70",
-        "https://bookbub-res.cloudinary.com/image/upload/f_auto,q_auto/v1584456073/blog/quotes-about-books-2-Cooley.jpg",
-        "https://hips.hearstapps.com/hmg-prod/images/paul-sweeney-book-quote-1531936023.jpg",
-        "https://www.rd.com/wp-content/uploads/2021/05/books_quote3.jpg?fit=680%2C680"
-    ];
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Readify - Your Elegant Digital Library</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
 
-    function showNextImage() {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        document.getElementById("quoteImage").src = images[currentImageIndex];
-    }
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1E1E1E;
+            --primary-color: #BB86FC;
+            --secondary-color: #03DAC6;
+            --on-surface-color: #FFFFFF;
+            --on-surface-muted: #A0A0A0;
+        }
 
-    function showConfirmation(event) {
-        event.preventDefault();
-        alert("Thank you for reaching out to Readify. Your message has been sent.");
-        document.getElementById("name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("phone").value = "";
-        document.getElementById("query").value = "";
-    }
-</script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--on-surface-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--on-surface-color);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--on-surface-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--on-surface-color);
+        }
+        
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1887&auto=format&fit=crop') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Lora', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--on-surface-muted);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--primary-color);
+            color: #000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(187, 134, 252, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(3, 218, 198, 0.4);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 100px 0;
+            background-color: var(--surface-color);
+        }
+        
+        .content-section h2 {
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            margin-bottom: 60px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature {
+            background: var(--bg-color);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            color: var(--on-surface-muted);
+            line-height: 1.6;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+        .quote-section h2 {
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+        blockquote {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: var(--on-surface-muted);
+            border-left: 3px solid var(--primary-color);
+            padding-left: 30px;
+        }
+        blockquote cite {
+            display: block;
+            margin-top: 20px;
+            font-size: 1rem;
+            font-style: normal;
+            color: var(--on-surface-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-color);
+            color: var(--on-surface-muted);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Chatbot Styles */
+        .chatbot-toggler {
+            position: fixed;
+            bottom: 30px;
+            right: 35px;
+            height: 60px;
+            width: 60px;
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: none;
+            box-shadow: 0 5px 20px rgba(187, 134, 252, 0.4);
+            transition: all 0.3s ease;
+        }
+        .chatbot-toggler:hover {
+            transform: scale(1.1);
+        }
+        .chatbot-toggler span {
+            color: var(--bg-color);
+            font-size: 2.2rem;
+        }
+        .chatbot {
+            position: fixed;
+            right: 35px;
+            bottom: 110px;
+            width: 420px;
+            background: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.5);
+            transform-origin: bottom right;
+            box-shadow: 0 0 128px 0 rgba(0,0,0,0.1), 0 32px 64px -48px rgba(0,0,0,0.5);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .show-chatbot .chatbot {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+        .chatbot header {
+            padding: 16px 0;
+            position: relative;
+            text-align: center;
+            color: var(--on-surface-color);
+            background: var(--bg-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .chatbot header h2 {
+            font-size: 1.4rem;
+            font-family: 'Lora', serif;
+        }
+        .chatbot .chatbox {
+            overflow-y: auto;
+            height: 510px;
+            padding: 30px 20px 100px;
+        }
+        .chatbox .chat {
+            display: flex;
+            list-style: none;
+        }
+        .chatbox .incoming span {
+            width: 32px;
+            height: 32px;
+            color: var(--bg-color);
+            text-align: center;
+            line-height: 32px;
+            align-self: flex-end;
+            background: var(--primary-color);
+            border-radius: 4px;
+            margin: 0 10px 7px 0;
+        }
+        .chatbox .outgoing {
+            margin: 20px 0;
+            justify-content: flex-end;
+        }
+        .chatbox .chat p {
+            color: #000;
+            max-width: 75%;
+            font-size: 0.95rem;
+            padding: 12px 16px;
+            border-radius: 10px 10px 0 10px;
+            background: var(--primary-color);
+        }
+        .chatbox .incoming p {
+            color: var(--on-surface-color);
+            background: #2a2a2a;
+            border-radius: 10px 10px 10px 0;
+        }
+        .chatbot .chat-input {
+            display: flex;
+            gap: 5px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: var(--bg-color);
+            padding: 5px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .chat-input textarea {
+            height: 55px;
+            width: 100%;
+            border: none;
+            outline: none;
+            resize: none;
+            max-height: 180px;
+            padding: 15px;
+            font-size: 0.95rem;
+            background: transparent;
+            color: var(--on-surface-color);
+        }
+        .chat-input span {
+            align-self: flex-end;
+            color: var(--primary-color);
+            cursor: pointer;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                padding: 0;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            nav ul li {
+                margin: 0 15px;
+            }
+            .hero {
+                height: 70vh;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
+            blockquote {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+             nav ul li {
+                margin: 5px 10px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .chatbot {
+                width: 100%;
+                right: 0;
+                bottom: 0;
+                border-radius: 0;
+                height: 100%;
+            }
+            .chatbot header {
+                border-radius: 0;
+            }
+            .chatbot .chatbox {
+                height: 90%;
+            }
+            .chatbot-toggler {
+                right: 20px;
+                bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <img src="logo.jpg" alt="Readify Logo">
-        <h1>Readify</h1>
-        <p>Read, Imagine, Inspire</p>
+        <div class="container">
+            <a href="index.html" class="logo">Readify<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="creator.html">Creator</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="books.html">Books</a> |
-        <a href="team.html">Our Team</a> |
-        <a href="feedback.html">Feedback</a>
-    </nav>
+
     <main>
-        <section id="home">
-            <h2>Welcome to Readify</h2>
-            <p>Welcome to Readify, where stories come alive.</p>
-            <p>Get lost in the pages with Readify, your ultimate book destination.</p>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Where Stories Come to Life.</h1>
+                <p>Explore a universe of knowledge and imagination. Your next great read awaits in a library curated for the curious mind.</p>
+                <a href="books.html" class="cta-button">Begin Your Journey</a>
+            </div>
         </section>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>At Readify, we're passionate about igniting a love for reading in every individual. Join us on this literary journey, and get ready to Readify your mind!</p>
-        </section>
-        <section id="vision">
-            <h2>Our Vision</h2>
-            <p>To create a global community of readers, connecting through shared stories and fostering empathy worldwide.</p>
-        </section>
-        <section id="team">
-            <h2>Our Team</h2>
-            <div class="team">
-                <div class="team-member">
-                    <img src="IMG_20240907_130342221_HDR_AE (1).jpg" alt="Team Member 1">
-                    <p>Naitik Kumar</p>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>Why Choose Readify?</h2>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">📚</div>
+                        <h3>Vast Collection</h3>
+                        <p>Dive into a meticulously curated library spanning timeless classics, modern fiction, and profound non-fiction.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">✨</div>
+                        <h3>Elegant Experience</h3>
+                        <p>Enjoy a clean, beautiful, and distraction-free reading environment designed to keep you immersed in the story.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Free for Everyone</h3>
+                        <p>We believe in the power of knowledge. Access our entire collection for free, forever. No hidden costs, no subscriptions.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💬</div>
+                        <h3>Community & Support</h3>
+                        <p>Join a community of fellow readers and get instant help from our friendly AI-powered Readify Assistant.</p>
+                    </div>
                 </div>
-                <div class="team-member">
-                    <img src="IMG-20241204-WA0017.jpg" alt="Team Member 2">
-                    <p>Muskan Gupta</p>
-                </div>
             </div>
         </section>
-        <section id="map-contact" class="map-contact-section">
-            <div class="contact-form">
-                <h2>Contact Us</h2>
-                <form onsubmit="showConfirmation(event)">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" required>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" required>
-                    <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" required>
-                    <label for="query">Message:</label>
-                    <textarea id="query" required></textarea>
-                    <button type="submit">Send</button>
-                </form>
-            </div>
-            <div class="map-section">
-                <h2>Quote for Today</h2>
-                <img id="quoteImage" src="Good-book.jpg" alt="Book Quote" onclick="showNextImage()">
+        
+        <section class="quote-section">
+            <div class="container">
+                <h2>A Thought for Today</h2>
+                <blockquote id="daily-quote">
+                    <p>"Loading today's inspiration..."</p>
+                    <cite></cite>
+                </blockquote>
             </div>
         </section>
+
     </main>
+
     <footer>
-        <p>© 2024 Readify - Empowering Minds Through Books</p>
+        <div class="container">
+            <p>&copy; 2024 Readify. Designed & Developed with passion by Naitik.</p>
+        </div>
     </footer>
+
+    <button class="chatbot-toggler">
+        <span>💬</span>
+    </button>
+    <div class="chatbot">
+        <header>
+            <h2>Readify Assistant</h2>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span>🤖</span>
+                <p>Hi there! I'm the Readify Assistant. How can I help you explore our library today?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Ask me anything..." spellcheck="false" required></textarea>
+            <span>➤</span>
+        </div>
+    </div>
+
+    <script>
+        // Daily Quote Logic
+        const quotes = [
+            { quote: "The more that you read, the more things you will know. The more that you learn, the more places you'll go.", cite: "Dr. Seuss" },
+            { quote: "A reader lives a thousand lives before he dies . . . The man who never reads lives only one.", cite: "George R.R. Martin" },
+            { quote: "Until I feared I would lose it, I never loved to read. One does not love breathing.", cite: "Harper Lee" },
+            { quote: "There is no friend as loyal as a book.", cite: "Ernest Hemingway" },
+            { quote: "So many books, so little time.", cite: "Frank Zappa" },
+            { quote: "A room without books is like a body without a soul.", cite: "Marcus Tullius Cicero" }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const quoteIndex = Math.floor(Math.random() * quotes.length);
+            const randomQuote = quotes[quoteIndex];
+
+            const quoteElement = document.querySelector("#daily-quote p");
+            const citeElement = document.querySelector("#daily-quote cite");
+
+            if(quoteElement && citeElement) {
+                quoteElement.textContent = `"${randomQuote.quote}"`;
+                citeElement.textContent = `— ${randomQuote.cite}`;
+            }
+        });
+
+        // Chatbot Logic
+        const chatbotToggler = document.querySelector(".chatbot-toggler");
+        const chatInput = document.querySelector(".chat-input textarea");
+        const sendChatBtn = document.querySelector(".chat-input span");
+        const chatbox = document.querySelector(".chatbox");
+
+        const createChatLi = (message, className) => {
+            const chatLi = document.createElement("li");
+            chatLi.classList.add("chat", className);
+            let chatContent = className === "outgoing" ? `<p></p>` : `<span>🤖</span><p></p>`;
+            chatLi.innerHTML = chatContent;
+            chatLi.querySelector("p").textContent = message;
+            return chatLi;
+        }
+
+        const generateResponse = (userMessage) => {
+            const responses = {
+                "hello": "Hello! How can I assist you?",
+                "hi": "Hi there! What can I do for you?",
+                "how are you": "I'm just a bot, but I'm doing great! Thanks for asking.",
+                "what is this website about": "Readify is a digital library where you can read a curated collection of books for free.",
+                "who created this website": "This website was created by Naitik, a passionate developer and open-source mentor.",
+                "books": "You can find a variety of books on the 'Books' page. We have religious, fictional, non-fictional, and more!",
+                "feedback": "I'd love to hear your thoughts! Please visit the 'Feedback' page to share them.",
+                "bye": "Goodbye! Have a great day."
+            };
+            
+            const lowerCaseMessage = userMessage.toLowerCase();
+            for (const key in responses) {
+                if (lowerCaseMessage.includes(key)) {
+                    return responses[key];
+                }
+            }
+            return "I'm sorry, I don't understand that. You can ask me about books, the creator, or how to give feedback.";
+        }
+
+        const handleChat = () => {
+            const userMessage = chatInput.value.trim();
+            if(!userMessage) return;
+            chatInput.value = "";
+            chatInput.style.height = "55px";
+
+            chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+            
+            setTimeout(() => {
+                const incomingChatLi = createChatLi("Thinking...", "incoming");
+                chatbox.appendChild(incomingChatLi);
+                chatbox.scrollTo(0, chatbox.scrollHeight);
+
+                setTimeout(() => {
+                    const response = generateResponse(userMessage);
+                    incomingChatLi.querySelector("p").textContent = response;
+                }, 800);
+            }, 600);
+        }
+        
+        chatInput.addEventListener("input", () => {
+            chatInput.style.height = "55px";
+            chatInput.style.height = `${chatInput.scrollHeight}px`;
+        });
+
+        sendChatBtn.addEventListener("click", handleChat);
+        chatInput.addEventListener("keydown", (e) => {
+            if(e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleChat();
+            }
+        });
+        chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+    </script>
 </body>
-</html>   
+</html>

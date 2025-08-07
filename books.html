@@ -1,302 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Readify - Books</title>
-<style>
-    /* General Styling */
-    body {
-        font-family: 'Verdana', sans-serif;
-        background: linear-gradient(to bottom, #E3F2FF, #FFF2E0); /* Soft blue to peach gradient */
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Collection - Readify</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
 
-    header {
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        text-align: center;
-        padding: 20px 0;
-    }
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1E1E1E;
+            --primary-color: #BB86FC;
+            --secondary-color: #03DAC6;
+            --on-surface-color: #FFFFFF;
+            --on-surface-muted: #A0A0A0;
+        }
 
-    header h1 {
-        margin: 0;
-        font-size: 2.5em;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    nav {
-        background-color: #5E45A8; /* Mid purple */
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-    }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--on-surface-color);
+            overflow-x: hidden;
+        }
 
-    nav a {
-        color: white;
-        text-decoration: none;
-        padding: 10px 15px;
-        font-weight: bold;
-    }
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-    nav a:hover {
-        background-color: #7C69D5; /* Lighter purple on hover */
-        border-radius: 5px;
-    }
+        /* Header & Navigation */
+        header {
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    main {
-        padding: 20px;
-    }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    section {
-        margin-bottom: 40px;
-    }
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--on-surface-color);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--primary-color);
+        }
 
-    section h2 {
-        color: #4A3F8B; /* Deep purple */
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
 
-    .book-category {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
+        nav ul li {
+            margin-left: 30px;
+        }
 
-    .book-card {
-        width: 200px;
-        text-align: center;
-        background-color: #FFFFFF;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        nav ul li a {
+            color: var(--on-surface-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
 
-    .book-card img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 15px;
-    }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
 
-    .book-card h3 {
-        margin: 10px 0;
-        color: #4A3F8B; /* Deep purple */
-    }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--on-surface-color);
+        }
+        
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
 
-    .book-card p {
-        color: #333;
-        font-size: 0.9em;
-        margin-bottom: 10px;
-    }
+        /* Page Header */
+        .page-header {
+            padding: 80px 20px;
+            text-align: center;
+            background: var(--surface-color);
+        }
 
-    .book-card a {
-        color: #5E45A8; /* Link color */
-        text-decoration: none;
-        font-weight: bold;
-    }
+        .page-header h1 {
+            font-family: 'Lora', serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
 
-    .book-card a:hover {
-        text-decoration: underline;
-    }
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--on-surface-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    footer {
-        background-color: #4A3F8B; /* Deep purple */
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        margin-top: 20px;
-    }
-</style>
+        /* Books Section */
+        .books-section {
+            padding: 80px 0;
+        }
+
+        .books-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.8rem;
+            color: var(--on-surface-color);
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 35px;
+        }
+        
+        .book-card {
+            background: var(--surface-color);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .book-card .book-cover {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-info {
+            padding: 20px 15px;
+        }
+
+        .book-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+            height: 50px; /* Fixed height for 2 lines */
+            overflow: hidden;
+        }
+
+        .book-info p {
+            font-size: 0.9rem;
+            color: var(--on-surface-muted);
+            margin-bottom: 20px;
+            height: 50px; /* Fixed height for description */
+            overflow: hidden;
+        }
+
+        .read-button {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: transparent;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .read-button:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-color);
+            color: var(--on-surface-muted);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+    </style>
 </head>
 <body>
+
     <header>
-        <h1>Books - Readify</h1>
+        <div class="container">
+            <a href="index.html" class="logo">Readify<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="books.html" class="active">Books</a></li>
+                    <li><a href="creator.html">Creator</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="books.html">Books</a> |
-        <a href="team.html">Our Team</a> |
-        <a href="feedback.html">Feedback</a>
-    </nav>
+
     <main>
-        <section>
-            <h2>Religious Books</h2>
-            <div class="book-category">
-                <!-- Book 1 -->
-                <div class="book-card">
-                    <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/book/r/3/u/bhagavad-gita-original-imah3j8x2bvhghd5.jpeg?q=90&crop=false" alt="Book 1">
-                    <h3>Bhagavad Gita</h3>
-                    <p>Ancient text of wisdom and spirituality.</p>
-                    <a href="https://ignca.gov.in/Asi_data/279.pdf" target="_blank">Read PDF</a>
-                </div>
-                <!-- Book 2 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/81+xYHww3NL._AC_UF1000,1000_QL80_.jpg" alt="Book 2">
-                    <h3>The Quran</h3>
-                    <p>The holy book of Islam, containing divine revelations.</p>
-                    <a href="https://www.pdfquran.com/download/big/big-quran.pdf" target="_blank">Read PDF</a>
-                </div>
-                <!-- Book 3 -->
-                <div class="book-card">
-                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1631965680i/280111.jpg" alt="Book 3">
-                    <h3>The Bible</h3>
-                    <p>Christian sacred text, rich in teachings and history.</p>
-                    <a href="https://www.churchofjesuschrist.org/bc/content/shared/content/english/pdf/language-materials/83512_eng.pdf" target="_blank">Read PDF</a>
-                </div>
-                <!-- Book 4 -->
-                <div class="book-card">
-                    <img src="https://img.yumpu.com/15772912/1/500x640/dhammapadapdf.jpg" alt="Book 4">
-                    <h3>The Dhammapada</h3>
-                    <p>Verses on Buddhist teachings for life and wisdom.</p>
-                    <a href="https://www.buddhanet.net/pdf_file/scrndhamma.pdf" target="_blank">Read PDF</a>
-                </div>
-            </div>
+        <section class="page-header">
+            <h1>Our Curated Collection</h1>
+            <p>Journey through genres and eras with our handpicked selection of timeless books.</p>
         </section>
 
-        <section>
-            <h2>Fictional Books</h2>
-            <div class="book-category">
-                <!-- Book 1 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/71XqqKTZz7L._AC_UF1000,1000_QL80_.jpg" alt="Book 1">
-                    <h3>Harry Potter and the Sorcerer's Stone</h3>
-                    <p>A young wizard's journey begins in this magical adventure.</p>
-                    <a href="https://docenti.unimc.it/antonella.pascali/teaching/2018/19055/files/ultima-lezione/harry-potter-and-the-philosophers-stone" target="_blank">Read PDF</a>
+        <div class="container">
+            <section class="books-section">
+                <h2>Religious & Philosophical</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/book/r/3/u/bhagavad-gita-original-imah3j8x2bvhghd5.jpeg?q=90&crop=false" alt="Bhagavad Gita" class="book-cover">
+                        <div class="book-info">
+                            <h3>Bhagavad Gita</h3>
+                            <p>Ancient text of wisdom and spirituality.</p>
+                            <a href="https://ignca.gov.in/Asi_data/279.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81+xYHww3NL._AC_UF1000,1000_QL80_.jpg" alt="The Quran" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Quran</h3>
+                            <p>The holy book of Islam, containing divine revelations.</p>
+                            <a href="https://www.pdfquran.com/download/big/big-quran.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1631965680i/280111.jpg" alt="The Bible" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Bible</h3>
+                            <p>Christian sacred text, rich in teachings and history.</p>
+                            <a href="https://www.churchofjesuschrist.org/bc/content/shared/content/english/pdf/language-materials/83512_eng.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                     <div class="book-card">
+                        <img src="https://img.yumpu.com/15772912/1/500x640/dhammapadapdf.jpg" alt="The Dhammapada" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Dhammapada</h3>
+                            <p>Verses on Buddhist teachings for life and wisdom.</p>
+                            <a href="https://www.buddhanet.net/pdf_file/scrndhamma.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Book 2 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/81mCE+uclxL._UF1000,1000_QL80_.jpg" alt="Book 2">
-                    <h3>The Hobbit</h3>
-                    <p>A tale of a small hobbit on an unexpected journey.</p>
-                    <a href="https://rsd2-alert-durden-reading-room.weebly.com/uploads/6/7/1/6/6716949/the_hobbit_tolkien.pdf" target="_blank">Read PDF</a>
-                </div>
-                <!-- Book 3 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/81NJTjH8EcL._AC_UF1000,1000_QL80_.jpg" alt="Book 3">
-                    <h3>Lord of the Rings</h3>
-                    <p>An epic saga of friendship and adventure in Middle-Earth.</p>
-                    <a href="https://s3.amazonaws.com/scschoolfiles/112/j-r-r-tolkien-lord-of-the-rings-01-the-fellowship-of-the-ring-retail-pdf.pdf" target="_blank">Read PDF</a>
-                </div>
-                <!-- Book 4 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/81IsNyKSOmL.jpg" alt="Book 4">
-                    <h3>The Chronicles of Narnia</h3>
-                    <p>A magical land filled with talking animals and epic battles.</p>
-                    <a href="https://s3.amazonaws.com/scschoolfiles/112/thechroniclesofnarnia.pdf" target="_blank">Read PDF</a>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section>
-            <h2>Non-Fictional Books</h2>
-            <div class="book-category">
-                <!-- Book 1 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/41fkYRj1OwL._SL500_.jpg" alt="Book 1">
-                    <h3>Educated</h3>
-                    <p>A memoir about overcoming hardship to gain an education.</p>
-                    <a href="https://ia800205.us.archive.org/15/items/educated-a-memoir_202403/Educated%20_%20A%20memoir.pdf" target="_blank">Read PDF</a>
+            <section class="books-section">
+                <h2>Fantasy & Adventure</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71XqqKTZz7L._AC_UF1000,1000_QL80_.jpg" alt="Harry Potter" class="book-cover">
+                        <div class="book-info">
+                            <h3>Harry Potter and the Sorcerer's Stone</h3>
+                            <p>A young wizard's journey begins in this magical adventure.</p>
+                            <a href="https://docenti.unimc.it/antonella.pascali/teaching/2018/19055/files/ultima-lezione/harry-potter-and-the-philosophers-stone" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81mCE+uclxL._UF1000,1000_QL80_.jpg" alt="The Hobbit" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Hobbit</h3>
+                            <p>A tale of a small hobbit on an unexpected journey.</p>
+                            <a href="https://rsd2-alert-durden-reading-room.weebly.com/uploads/6/7/1/6/6716949/the_hobbit_tolkien.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81NJTjH8EcL._AC_UF1000,1000_QL80_.jpg" alt="Lord of the Rings" class="book-cover">
+                        <div class="book-info">
+                            <h3>Lord of the Rings</h3>
+                            <p>An epic saga of friendship and adventure in Middle-Earth.</p>
+                            <a href="https://s3.amazonaws.com/scschoolfiles/112/j-r-r-tolkien-lord-of-the-rings-01-the-fellowship-of-the-ring-retail-pdf.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81IsNyKSOmL.jpg" alt="The Chronicles of Narnia" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Chronicles of Narnia</h3>
+                            <p>A magical land filled with talking animals and epic battles.</p>
+                            <a href="https://s3.amazonaws.com/scschoolfiles/112/thechroniclesofnarnia.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Book 2 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/713jIoMO3UL.jpg" alt="Book 2">
-                    <h3>Sapiens</h3>
-                    <p>The story of humankind and our evolution.</p>
-                    <a href="https://ia803201.us.archive.org/34/items/sbrief/Sapiens_%20A%20Brief%20History%20of%20Humankind%20-%20Yuval%20Noah%20Harari.pdf" target="_blank">Read PDF</a>
+            </section>
+            
+            <section class="books-section">
+                <h2>Non-Fiction & Self-Help</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/713jIoMO3UL.jpg" alt="Sapiens" class="book-cover">
+                        <div class="book-info">
+                            <h3>Sapiens</h3>
+                            <p>The story of humankind and our evolution.</p>
+                            <a href="https://ia803201.us.archive.org/34/items/sbrief/Sapiens_%20A%20Brief%20History%20of%20Humankind%20-%20Yuval%20Noah%20Harari.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71eoUH2EngL.jpg" alt="The Power of Habit" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Power of Habit</h3>
+                            <p>How habits are formed and how they shape our lives.</p>
+                            <a href="https://ia803102.us.archive.org/35/items/CharlesDuhigg.ThePowerOfHabit_201808/Charles-Duhigg.The-Power-of-Habit.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Book 3 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/81KGjsBXQ7L._AC_UF1000,1000_QL80_.jpg" alt="Book 3">
-                    <h3>Becoming</h3>
-                    <p>Michelle Obama's inspiring life story and journey.</p>
-                    <a href="https://icrrd.com/public/media/15-05-2021-133541Becoming-Michelle-Obama.pdf" target="_blank">Read PDF</a>
-                </div>
-                <!-- Book 4 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/71eoUH2EngL.jpg" alt="Book 4">
-                    <h3>The Power of Habit</h3>
-                    <p>How habits are formed and how they shape our lives.</p>
-                    <a href="https://ia803102.us.archive.org/35/items/CharlesDuhigg.ThePowerOfHabit_201808/Charles-Duhigg.The-Power-of-Habit.pdf" target="_blank">Read PDF</a>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section>
-            <h2>Novels</h2>
-            <div class="book-category">
-                <!-- Book 1 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/81gepf1eMqL._AC_UF1000,1000_QL80_.jpg" alt="Book 1">
-                    <h3>To Kill a Mockingbird</h3>
-                    <p>A gripping story about justice and morality in the deep South.</p>
-                    <a href="https://www.raio.org/TKMFullText.pdf" target="_blank">Read PDF</a>
+            <section class="books-section">
+                <h2>Biographies & Memoirs</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/41fkYRj1OwL._SL500_.jpg" alt="Educated" class="book-cover">
+                        <div class="book-info">
+                            <h3>Educated</h3>
+                            <p>A memoir about overcoming hardship to gain an education.</p>
+                            <a href="https://ia800205.us.archive.org/15/items/educated-a-memoir_202403/Educated%20_%20A%20memoir.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81KGjsBXQ7L._AC_UF1000,1000_QL80_.jpg" alt="Becoming" class="book-cover">
+                        <div class="book-info">
+                            <h3>Becoming</h3>
+                            <p>Michelle Obama's inspiring life story and journey.</p>
+                            <a href="https://icrrd.com/public/media/15-05-2021-133541Becoming-Michelle-Obama.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Book 2 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/M/MV5BMTA1NDQ3NTcyOTNeQTJeQWpwZ15BbWU3MDA0MzA4MzE@._V1_.jpg" alt="Book 2">
-                    <h3>Pride and Prejudice</h3>
-                    <p>Classic romance set against the backdrop of societal norms.</p>
-                    <a href="https://giove.isti.cnr.it/demo/eread/Libri/joy/Pride.pdf" target="_blank">Read PDF</a>
-                </div>
-                <!-- Book 3 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/71rpa1-kyvL._AC_UF1000,1000_QL80_.jpg" alt="Book 3">
-                    <h3>1984</h3>
-                    <p>A dystopian novel exploring totalitarianism and surveillance.</p>
-                    <a href="https://rauterberg.employee.id.tue.nl/lecturenotes/DDM110%20CAS/Orwell-1949%201984.pdf" target="_blank">Read PDF</a>
-                </div>
-                <!-- Book 4 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/71X7HnBk6VL._UF1000,1000_QL80_.jpg" alt="Book 4">
-                    <h3>The Great Gatsby</h3>
-                    <p>The story of love, wealth, and the American Dream in the Jazz Age.</p>
-                    <a href="https://www.planetebook.com/free-ebooks/the-great-gatsby.pdf" target="_blank">Read PDF</a>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section>
-            <h2>Comics</h2>
-            <div class="book-category">
-                <!-- Book 1 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/91UCSaRIgmL._AC_UF1000,1000_QL80_.jpg" alt="Book 1">
-                    <h3>Spider-Man: Into the Spider-Verse</h3>
-                    <p>A comic exploring different Spider-Man universes and characters.</p>
-                    <a href="https://ia600404.us.archive.org/13/items/across-the-spider-verse-the-art-of-the-movie/Spider-Man%20Across%20the%20Spider-Verse%20The%20Art%20of%20the%20Movie_text.pdf" target="_blank">Read PDF</a>
+            <section class="books-section">
+                <h2>Literary Novels</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81gepf1eMqL._AC_UF1000,1000_QL80_.jpg" alt="To Kill a Mockingbird" class="book-cover">
+                        <div class="book-info">
+                            <h3>To Kill a Mockingbird</h3>
+                            <p>A gripping story about justice and morality in the deep South.</p>
+                            <a href="https://www.raio.org/TKMFullText.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTA1NDQ3NTcyOTNeQTJeQWpwZ15BbWU3MDA0MzA4MzE@._V1_.jpg" alt="Pride and Prejudice" class="book-cover">
+                        <div class="book-info">
+                            <h3>Pride and Prejudice</h3>
+                            <p>Classic romance set against the backdrop of societal norms.</p>
+                            <a href="https://giove.isti.cnr.it/demo/eread/Libri/joy/Pride.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71rpa1-kyvL._AC_UF1000,1000_QL80_.jpg" alt="1984" class="book-cover">
+                        <div class="book-info">
+                            <h3>1984</h3>
+                            <p>A dystopian novel exploring totalitarianism and surveillance.</p>
+                            <a href="https://rauterberg.employee.id.tue.nl/lecturenotes/DDM110%20CAS/Orwell-1949%201984.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71X7HnBk6VL._UF1000,1000_QL80_.jpg" alt="The Great Gatsby" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Great Gatsby</h3>
+                            <p>The story of love, wealth, and the American Dream in the Jazz Age.</p>
+                            <a href="https://www.planetebook.com/free-ebooks/the-great-gatsby.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Book 2 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/81yS0pwpUaL._AC_UF1000,1000_QL80_.jpg" alt="Book 2">
-                    <h3>The Avengers</h3>
-                    <p>The Avengers team up to fight against an alien invasion.</p>
-                    <a href="https://drive.google.com/file/d/1SQZSRT8kW8PXr4iP8PZ7CqVWvMtxspE4/view">Read PDF</a>
+            </section>
+            
+            <section class="books-section">
+                <h2>Graphic Novels & Comics</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/91UCSaRIgmL._AC_UF1000,1000_QL80_.jpg" alt="Spider-Man: Into the Spider-Verse" class="book-cover">
+                        <div class="book-info">
+                            <h3>Spider-Man: Into the Spider-Verse</h3>
+                            <p>A comic exploring different Spider-Man universes and characters.</p>
+                            <a href="https://ia600404.us.archive.org/13/items/across-the-spider-verse-the-art-of-the-movie/Spider-Man%20Across%20the%20Spider-Verse%20The%20Art%20of%20the%20Movie_text.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81yS0pwpUaL._AC_UF1000,1000_QL80_.jpg" alt="The Avengers" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Avengers</h3>
+                            <p>The Avengers team up to fight against an alien invasion.</p>
+                            <a href="https://drive.google.com/file/d/1SQZSRT8kW8PXr4iP8PZ7CqVWvMtxspE4/view" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/A1QY5vfbpmL._UF1000,1000_QL80_.jpg" alt="Batman: The Killing Joke" class="book-cover">
+                        <div class="book-info">
+                            <h3>Batman: The Killing Joke</h3>
+                            <p>A dark exploration of the Joker's origin and Batman's struggles.</p>
+                            <a href="https://acephalous.typepad.com/files/killingjoke.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1345143735i/1191166.jpg" alt="X-Men: Dark Phoenix" class="book-cover">
+                        <div class="book-info">
+                            <h3>X-Men: Dark Phoenix</h3>
+                            <p>The X-Men battle a powerful force as Jean Grey becomes the Dark Phoenix.</p>
+                            <a href="https://ia601501.us.archive.org/24/items/uncanny-x-men-137-1980-digital-minutemen-syl-3nt-bob/Uncanny%20X-Men%20125%20(1979)%20(digital)%20(Minutemen-Syl3ntBob).pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Book 3 -->
-                <div class="book-card">
-                    <img src="https://m.media-amazon.com/images/I/A1QY5vfbpmL._UF1000,1000_QL80_.jpg" alt="Book 3">
-                    <h3>Batman: The Killing Joke</h3>
-                    <p>A dark exploration of the Joker's origin and Batman's struggles.</p>
-                    <a href="https://acephalous.typepad.com/files/killingjoke.pdf" target="_blank">Read PDF</a>
-                </div>
-                <!-- Book 4 -->
-                <div class="book-card">
-                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1345143735i/1191166.jpg" alt="Book 4">
-                    <h3>X-Men: Dark Phoenix</h3>
-                    <p>The X-Men battle a powerful force as Jean Grey becomes the Dark Phoenix.</p>
-                    <a href="https://ia601501.us.archive.org/24/items/uncanny-x-men-137-1980-digital-minutemen-syl-3nt-bob/Uncanny%20X-Men%20125%20(1979)%20(digital)%20(Minutemen-Syl3ntBob).pdf" target="_blank">Read PDF</a>
-                </div>
-            </div>
-        </section>
-
+            </section>
+        </div>
     </main>
+
     <footer>
-        <p>© 2024 Readify - Empowering Minds Through Books</p>
+        <div class="container">
+            <p>&copy; 2024 Readify. Designed & Developed with passion by Naitik.</p>
+        </div>
     </footer>
+
 </body>
 </html>
