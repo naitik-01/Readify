@@ -6,7 +6,7 @@ A modern, responsive, and feature-rich web application for book lovers to discov
 <br />
 
 <p align="center">
-<a href="YOUR_LIVE_DEMO_LINK_HERE" target="_blank">
+<a href="https://readify-liard.vercel.app/" target="_blank">
 <img src="https://img.shields.io/badge/Live%20Demo-View%20Site-brightgreen?style=for-the-badge&logo=vercel" alt="Live Demo">
 </a>
 </p>
@@ -50,11 +50,11 @@ To get a local copy up and running, follow these simple steps.
 
 Clone the repository:
 
-git clone https://github.com/YOUR_USERNAME/readify.git
+git clone https://github.com/naitik-01/Readify.git
 
 Navigate to the project directory:
 
-cd readify
+cd Readify
 
 Open index.html in your browser:
 Simply open the index.html file in your favorite web browser to view the project locally.
@@ -69,8 +69,9 @@ A passionate 3rd-year Computer Science student, open-source mentor, and develope
 Feel free to connect with him!
 
 <div align="center">
-<a href="YOUR_LINKEDIN_URL" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-<a href="YOUR_GITHUB_URL" target="_blank"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+<a href="https://www.linkedin.com/in/naitikkumar/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+<a href="https://github.com/naitik-01/Readify/tree/main" target="_blank"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+<a href="http://naitikkumar.xyz/" target="_blank"><img src="https://img.shields.io/badge/Portfolio-Website-blue?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio"/></a>
 </div>
 
 📄 License
