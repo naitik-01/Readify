@@ -299,6 +299,21 @@
             background: var(--bg-color);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        /* START: Added CSS for Close Button */
+        .chatbot header .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--on-surface-muted);
+            cursor: pointer;
+            font-size: 1.8rem;
+            transition: color 0.2s ease;
+        }
+        .chatbot header .close-btn:hover {
+            color: var(--on-surface-color);
+        }
+        /* END: Added CSS for Close Button */
         .chatbot header h2 {
             font-size: 1.4rem;
             font-family: 'Lora', serif;
@@ -515,7 +530,8 @@
     <div class="chatbot">
         <header>
             <h2>Readify Assistant</h2>
-        </header>
+            <span class="close-btn">&times;</span>
+            </header>
         <ul class="chatbox">
             <li class="chat incoming">
                 <span>🤖</span>
@@ -554,6 +570,7 @@
 
         // Chatbot Logic
         const chatbotToggler = document.querySelector(".chatbot-toggler");
+        const closeBtn = document.querySelector(".close-btn"); // START: Select the close button
         const chatInput = document.querySelector(".chat-input textarea");
         const sendChatBtn = document.querySelector(".chat-input span");
         const chatbox = document.querySelector(".chatbox");
@@ -657,6 +674,8 @@
             }
         });
         chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+        closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot")); // START: Add event listener for close button
     </script>
 </body>
+
 </html>
