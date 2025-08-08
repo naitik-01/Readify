@@ -66,6 +66,7 @@
         nav ul {
             list-style: none;
             display: flex;
+            align-items: center;
         }
 
         nav ul li {
@@ -259,6 +260,7 @@
             border: none;
             box-shadow: 0 5px 20px rgba(187, 134, 252, 0.4);
             transition: all 0.3s ease;
+            z-index: 1001;
         }
         .chatbot-toggler:hover {
             transform: scale(1.1);
@@ -282,6 +284,7 @@
             box-shadow: 0 0 128px 0 rgba(0,0,0,0.1), 0 32px 64px -48px rgba(0,0,0,0.5);
             transition: all 0.2s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1001;
         }
         .show-chatbot .chatbot {
             opacity: 1;
@@ -331,6 +334,7 @@
             padding: 12px 16px;
             border-radius: 10px 10px 0 10px;
             background: var(--primary-color);
+            white-space: pre-wrap;
         }
         .chatbox .incoming p {
             color: var(--on-surface-color);
@@ -358,6 +362,7 @@
             font-size: 0.95rem;
             background: transparent;
             color: var(--on-surface-color);
+            font-family: 'Montserrat', sans-serif;
         }
         .chat-input span {
             align-self: flex-end;
@@ -385,9 +390,10 @@
                 padding: 0;
                 justify-content: center;
                 flex-wrap: wrap;
+                gap: 10px;
             }
             nav ul li {
-                margin: 0 15px;
+                margin: 0 10px;
             }
             .hero {
                 height: 70vh;
@@ -407,24 +413,22 @@
         }
 
         @media (max-width: 480px) {
-             nav ul li {
-                margin: 5px 10px;
-            }
             .hero h1 {
                 font-size: 2.2rem;
             }
             .chatbot {
                 width: 100%;
+                height: 100%;
                 right: 0;
                 bottom: 0;
                 border-radius: 0;
-                height: 100%;
             }
             .chatbot header {
                 border-radius: 0;
             }
             .chatbot .chatbox {
                 height: 90%;
+                padding-bottom: 70px;
             }
             .chatbot-toggler {
                 right: 20px;
@@ -501,7 +505,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Readify. Designed & Developed with passion by Naitik.</p>
+            <p>&copy; 2025 Readify. Designed & Developed with passion by Naitik.</p>
         </div>
     </footer>
 
@@ -564,24 +568,58 @@
         }
 
         const generateResponse = (userMessage) => {
-            const responses = {
-                "hello": "Hello! How can I assist you?",
-                "hi": "Hi there! What can I do for you?",
-                "how are you": "I'm just a bot, but I'm doing great! Thanks for asking.",
-                "what is this website about": "Readify is a digital library where you can read a curated collection of books for free.",
-                "who created this website": "This website was created by Naitik, a passionate developer and open-source mentor.",
-                "books": "You can find a variety of books on the 'Books' page. We have religious, fictional, non-fictional, and more!",
-                "feedback": "I'd love to hear your thoughts! Please visit the 'Feedback' page to share them.",
-                "bye": "Goodbye! Have a great day."
-            };
-            
             const lowerCaseMessage = userMessage.toLowerCase();
+            
+            // Keywords and responses
+           const responses = {
+    // Creator info
+    "creator": "Readify was created by Naitik Kumar, a passionate developer and open-source mentor. You can check out his work at naitikkumar.xyz or contact him at naitikkumarmeps@gmail.com.",
+    "naitik": "Naitik Kumar is the creator of this website. He's a Computer Science student and a tech enthusiast. Find out more at his portfolio: naitikkumar.xyz.",
+
+    // Books general
+    "book": "We have a great collection! You can find them on the 'Books' page. We have everything from 'Atomic Habits' and 'Sapiens' to classics like '1984' and even comics like 'Spider-Man'.",
+    "books": "We have a great collection! You can find them on the 'Books' page. We have everything from 'Atomic Habits' and 'Sapiens' to classics like '1984' and even comics like 'Spider-Man'.",
+    "suggest a book": "Sure! If you like self-improvement, try 'Atomic Habits'. For history lovers, 'Sapiens' is great. For fiction, 'The Alchemist' or 'Harry Potter' are must-reads.",
+    "recommend a book": "I'd recommend 'The Psychology of Money' for finance, 'Ikigai' for life purpose, or 'Wings of Fire' for inspiration.",
+
+    // Specific books
+    "atomic habits": "Ah, 'Atomic Habits' by James Clear is a fantastic book on building good habits. You can find it on our 'Books' page!",
+    "ikigai": "'Ikigai' is a wonderful book about finding your purpose. It's available in our collection on the 'Books' page.",
+    "sapiens": "'Sapiens' by Yuval Noah Harari is a must-read for anyone interested in human history. Head over to the 'Books' page to find it.",
+    "rich dad poor dad": "'Rich Dad Poor Dad' by Robert T. Kiyosaki offers great financial insights. It's available on our 'Books' page.",
+    "psychology of money": "Morgan Housel's 'The Psychology of Money' is an excellent read on wealth and happiness. Check it out on the 'Books' page.",
+    "steve jobs": "The biography of Steve Jobs by Walter Isaacson is truly inspiring. It's listed on our 'Books' page.",
+    "wings of fire": "'Wings of Fire' is the autobiography of Dr. A.P.J. Abdul Kalam, a true inspiration. You can read it from our 'Books' page.",
+    "alchemist": "'The Alchemist' by Paulo Coelho is a beautiful story about following your dreams. You'll find it in our fiction section.",
+    "harry potter": "Who doesn't love Harry Potter? You can start the magical journey with 'Harry Potter and the Sorcerer's Stone' from our 'Books' page.",
+    "1984": "'1984' by George Orwell is a gripping dystopian novel about surveillance and freedom. A must-read classic.",
+    "spider-man": "Yes! We have Spider-Man comics too for some superhero fun.",
+
+    // Genre and theme-based
+    "indian economy": "For Indian economy, try 'India Unbound' by Gurcharan Das or 'The Indian Economy' by Sanjiv Verma.",
+    "indian polity": "'Indian Polity' by M. Laxmikanth is the go-to book for understanding the Indian political system.",
+    "history": "For history buffs, 'India After Gandhi' by Ramachandra Guha or 'Discovery of India' by Jawaharlal Nehru are great picks.",
+    "freedom fighters": "Read about freedom fighters in books like 'Why I Am an Atheist' by Bhagat Singh or 'My Experiments with Truth' by Mahatma Gandhi.",
+    "biography": "We have biographies of great people like A.P.J. Abdul Kalam, Steve Jobs, and Elon Musk.",
+
+    // Bot small talk
+    "feedback": "We'd love to hear your thoughts! Please visit the 'Feedback' page to send us a message.",
+    "hello": "Hello! How can I assist you today? You can ask me about our books, the creator, or how to provide feedback.",
+    "hi": "Hi there! What can I do for you? Feel free to ask about our book collection or the creator of Readify.",
+    "how are you": "I'm just a bot, but I'm doing great! Ready to help you find your next great read.",
+    "bye": "Goodbye! Happy reading!",
+    "thank you": "You're welcome! Always here to help you pick your next read.",
+    "who are you": "I'm Readify's friendly bot! I can help you find books, tell you about the creator, or recommend something to read."
+};
+
+
             for (const key in responses) {
                 if (lowerCaseMessage.includes(key)) {
                     return responses[key];
                 }
             }
-            return "I'm sorry, I don't understand that. You can ask me about books, the creator, or how to give feedback.";
+            
+            return "I'm sorry, I'm not sure how to answer that. You can ask me about our 'books', the 'creator' of the site, or how to leave 'feedback'.";
         }
 
         const handleChat = () => {
@@ -601,12 +639,13 @@
                 setTimeout(() => {
                     const response = generateResponse(userMessage);
                     incomingChatLi.querySelector("p").textContent = response;
+                    chatbox.scrollTo(0, chatbox.scrollHeight); // Scroll again after response
                 }, 800);
             }, 600);
         }
         
         chatInput.addEventListener("input", () => {
-            chatInput.style.height = "55px";
+            chatInput.style.height = "auto";
             chatInput.style.height = `${chatInput.scrollHeight}px`;
         });
 
