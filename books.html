@@ -123,7 +123,7 @@
 
         /* Books Section */
         .books-section {
-            padding: 80px 0;
+            padding: 60px 0 0 0;
         }
 
         .books-section h2 {
@@ -149,6 +149,8 @@
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .book-card:hover {
@@ -165,6 +167,9 @@
 
         .book-info {
             padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .book-info h3 {
@@ -173,7 +178,7 @@
             font-size: 1.1rem;
             margin: 0 0 8px 0;
             line-height: 1.4;
-            height: 50px; /* Fixed height for 2 lines */
+            height: 50px; 
             overflow: hidden;
         }
 
@@ -181,8 +186,9 @@
             font-size: 0.9rem;
             color: var(--on-surface-muted);
             margin-bottom: 20px;
-            height: 50px; /* Fixed height for description */
+            height: 70px; 
             overflow: hidden;
+            flex-grow: 1;
         }
 
         .read-button {
@@ -195,11 +201,19 @@
             border: 1px solid var(--primary-color);
             transition: all 0.3s ease;
             font-weight: 500;
+            margin-top: auto;
         }
 
         .read-button:hover {
             background-color: var(--primary-color);
             color: #000;
+        }
+        
+        .read-button.disabled {
+            color: #555;
+            border-color: #555;
+            pointer-events: none;
+            background-color: transparent;
         }
 
         /* Footer */
@@ -208,7 +222,7 @@
             color: var(--on-surface-muted);
             text-align: center;
             padding: 3rem 0;
-            margin-top: 50px;
+            margin-top: 80px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -239,98 +253,60 @@
 
         <div class="container">
             <section class="books-section">
-                <h2>Religious & Philosophical</h2>
-                <div class="book-grid">
-                    <div class="book-card">
-                        <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/book/r/3/u/bhagavad-gita-original-imah3j8x2bvhghd5.jpeg?q=90&crop=false" alt="Bhagavad Gita" class="book-cover">
-                        <div class="book-info">
-                            <h3>Bhagavad Gita</h3>
-                            <p>Ancient text of wisdom and spirituality.</p>
-                            <a href="https://ignca.gov.in/Asi_data/279.pdf" class="read-button" target="_blank">Read Now</a>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <img src="https://m.media-amazon.com/images/I/81+xYHww3NL._AC_UF1000,1000_QL80_.jpg" alt="The Quran" class="book-cover">
-                        <div class="book-info">
-                            <h3>The Quran</h3>
-                            <p>The holy book of Islam, containing divine revelations.</p>
-                            <a href="https://www.pdfquran.com/download/big/big-quran.pdf" class="read-button" target="_blank">Read Now</a>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1631965680i/280111.jpg" alt="The Bible" class="book-cover">
-                        <div class="book-info">
-                            <h3>The Bible</h3>
-                            <p>Christian sacred text, rich in teachings and history.</p>
-                            <a href="https://www.churchofjesuschrist.org/bc/content/shared/content/english/pdf/language-materials/83512_eng.pdf" class="read-button" target="_blank">Read Now</a>
-                        </div>
-                    </div>
-                     <div class="book-card">
-                        <img src="https://img.yumpu.com/15772912/1/500x640/dhammapadapdf.jpg" alt="The Dhammapada" class="book-cover">
-                        <div class="book-info">
-                            <h3>The Dhammapada</h3>
-                            <p>Verses on Buddhist teachings for life and wisdom.</p>
-                            <a href="https://www.buddhanet.net/pdf_file/scrndhamma.pdf" class="read-button" target="_blank">Read Now</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="books-section">
-                <h2>Fantasy & Adventure</h2>
-                <div class="book-grid">
-                    <div class="book-card">
-                        <img src="https://m.media-amazon.com/images/I/71XqqKTZz7L._AC_UF1000,1000_QL80_.jpg" alt="Harry Potter" class="book-cover">
-                        <div class="book-info">
-                            <h3>Harry Potter and the Sorcerer's Stone</h3>
-                            <p>A young wizard's journey begins in this magical adventure.</p>
-                            <a href="https://docenti.unimc.it/antonella.pascali/teaching/2018/19055/files/ultima-lezione/harry-potter-and-the-philosophers-stone" class="read-button" target="_blank">Read Now</a>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <img src="https://m.media-amazon.com/images/I/81mCE+uclxL._UF1000,1000_QL80_.jpg" alt="The Hobbit" class="book-cover">
-                        <div class="book-info">
-                            <h3>The Hobbit</h3>
-                            <p>A tale of a small hobbit on an unexpected journey.</p>
-                            <a href="https://rsd2-alert-durden-reading-room.weebly.com/uploads/6/7/1/6/6716949/the_hobbit_tolkien.pdf" class="read-button" target="_blank">Read Now</a>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <img src="https://m.media-amazon.com/images/I/81NJTjH8EcL._AC_UF1000,1000_QL80_.jpg" alt="Lord of the Rings" class="book-cover">
-                        <div class="book-info">
-                            <h3>Lord of the Rings</h3>
-                            <p>An epic saga of friendship and adventure in Middle-Earth.</p>
-                            <a href="https://s3.amazonaws.com/scschoolfiles/112/j-r-r-tolkien-lord-of-the-rings-01-the-fellowship-of-the-ring-retail-pdf.pdf" class="read-button" target="_blank">Read Now</a>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <img src="https://m.media-amazon.com/images/I/81IsNyKSOmL.jpg" alt="The Chronicles of Narnia" class="book-cover">
-                        <div class="book-info">
-                            <h3>The Chronicles of Narnia</h3>
-                            <p>A magical land filled with talking animals and epic battles.</p>
-                            <a href="https://s3.amazonaws.com/scschoolfiles/112/thechroniclesofnarnia.pdf" class="read-button" target="_blank">Read Now</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="books-section">
                 <h2>Non-Fiction & Self-Help</h2>
                 <div class="book-grid">
                     <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81wgcld4wxL._AC_UF1000,1000_QL80_.jpg" alt="Atomic Habits" class="book-cover">
+                        <div class="book-info">
+                            <h3>Atomic Habits</h3>
+                            <p>By James Clear. An easy & proven way to build good habits & break bad ones.</p>
+                            <a href="https://dn790007.ca.archive.org/0/items/atomic-habits-pdfdrive/Atomic%20habits%20%28%20PDFDrive%20%29.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://kitabexpocanada.com/cdn/shop/files/IMG-1854_1024x1024.jpg?v=1752701091" alt="Ikigai" class="book-cover">
+                        <div class="book-info">
+                            <h3>Ikigai</h3>
+                            <p>By Héctor García. The Japanese secret to a long and happy life.</p>
+                            <a href="https://dn790007.ca.archive.org/0/items/ikigai-the-japanese-secret-to-a-long-and-happy-life-pdfdrive.com/Ikigai%20_%20the%20Japanese%20secret%20to%20a%20long%20and%20happy%20life%20%28%20PDFDrive.com%20%29.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
                         <img src="https://m.media-amazon.com/images/I/713jIoMO3UL.jpg" alt="Sapiens" class="book-cover">
                         <div class="book-info">
-                            <h3>Sapiens</h3>
-                            <p>The story of humankind and our evolution.</p>
-                            <a href="https://ia803201.us.archive.org/34/items/sbrief/Sapiens_%20A%20Brief%20History%20of%20Humankind%20-%20Yuval%20Noah%20Harari.pdf" class="read-button" target="_blank">Read Now</a>
+                            <h3>Sapiens: A Brief History of Humankind</h3>
+                            <p>By Yuval Noah Harari. The story of humankind and our evolution.</p>
+                            <a href="https://ethz.ch/content/dam/ethz/special-interest/usys/ites/ecosystem-management-dam/documents/EducationDOC/Readings_DOC/sapiens.pdf" class="read-button" target="_blank">Read Now</a>
                         </div>
                     </div>
                     <div class="book-card">
                         <img src="https://m.media-amazon.com/images/I/71eoUH2EngL.jpg" alt="The Power of Habit" class="book-cover">
                         <div class="book-info">
                             <h3>The Power of Habit</h3>
-                            <p>How habits are formed and how they shape our lives.</p>
+                            <p>By Charles Duhigg. How habits are formed and how they shape our lives.</p>
                             <a href="https://ia803102.us.archive.org/35/items/CharlesDuhigg.ThePowerOfHabit_201808/Charles-Duhigg.The-Power-of-Habit.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="books-section">
+                <h2>Finance & Personal Growth</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81BE7eeKzAL._AC_UF1000,1000_QL80_.jpg" alt="Rich Dad Poor Dad" class="book-cover">
+                        <div class="book-info">
+                            <h3>Rich Dad Poor Dad</h3>
+                            <p>By Robert T. Kiyosaki. What the rich teach their kids about money that the poor and middle class do not.</p>
+                            <a href="https://dn721905.ca.archive.org/0/items/rich-dad-poor-dad_bongotweet/rich-dad-poor-dad.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://imgv2-1-f.scribdassets.com/img/document/774411965/original/545b0a5a6f/1?v=1" alt="The Psychology of Money" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Psychology of Money</h3>
+                            <p>By Morgan Housel. Timeless lessons on wealth, greed, and happiness.</p>
+                            <a href="https://hostnezt.com/cssfiles/general/the-psychology-of-money-by-morgan-housel.pdf" class="read-button" target="_blank">Read Now</a>
                         </div>
                     </div>
                 </div>
@@ -340,10 +316,42 @@
                 <h2>Biographies & Memoirs</h2>
                 <div class="book-grid">
                     <div class="book-card">
+                        <img src="https://img.perlego.com/book-covers/778577/9781451648553_300_450.webp" alt="Steve Jobs" class="book-cover">
+                        <div class="book-info">
+                            <h3>Steve Jobs</h3>
+                            <p>By Walter Isaacson. The exclusive biography of the visionary founder of Apple.</p>
+                            <a href="https://www.readdiary.com/wp-content/uploads/2022/05/Steve-Jobs-PDFDrive-1.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://ia803105.us.archive.org/BookReader/BookReaderImages.php?zip=/5/items/wingsoffireautobiographyofapjkal/WINGS_OF_FIRE_Autobiography_of_A_P_J_Kal_jp2.zip&file=WINGS_OF_FIRE_Autobiography_of_A_P_J_Kal_jp2/WINGS_OF_FIRE_Autobiography_of_A_P_J_Kal_0000.jp2&id=wingsoffireautobiographyofapjkal&scale=4&rotate=0" alt="Wings of Fire" class="book-cover">
+                        <div class="book-info">
+                            <h3>Wings of Fire</h3>
+                            <p>By A.P.J. Abdul Kalam. The inspiring autobiography of the former President of India.</p>
+                            <a href="https://ati.dae.gov.in/ati12052021_8.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1560816565i/48855.jpg" alt="The Diary of a Young Girl" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Diary of a Young Girl</h3>
+                            <p>By Anne Frank. The powerful and moving diary of a young Jewish girl during the Holocaust.</p>
+                            <a href="https://ajarng.weebly.com/uploads/8/2/3/0/8230849/pages_from_anne_frank_-_the_diary_of_a_young_girl.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/91jMa+ndqrL.jpg" alt="Long Walk to Freedom" class="book-cover">
+                        <div class="book-info">
+                            <h3>Long Walk to Freedom</h3>
+                            <p>By Nelson Mandela. The autobiography of the anti-apartheid revolutionary and former South African President.</p>
+                            <a href="https://courseware.cutm.ac.in/wp-content/uploads/2020/05/Long-Walk-to-Freedom-Autobiography-of-Nelson-Mandela.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                     <div class="book-card">
                         <img src="https://m.media-amazon.com/images/I/41fkYRj1OwL._SL500_.jpg" alt="Educated" class="book-cover">
                         <div class="book-info">
                             <h3>Educated</h3>
-                            <p>A memoir about overcoming hardship to gain an education.</p>
+                            <p>By Tara Westover. A memoir about overcoming hardship to gain an education.</p>
                             <a href="https://ia800205.us.archive.org/15/items/educated-a-memoir_202403/Educated%20_%20A%20memoir.pdf" class="read-button" target="_blank">Read Now</a>
                         </div>
                     </div>
@@ -351,21 +359,129 @@
                         <img src="https://m.media-amazon.com/images/I/81KGjsBXQ7L._AC_UF1000,1000_QL80_.jpg" alt="Becoming" class="book-cover">
                         <div class="book-info">
                             <h3>Becoming</h3>
-                            <p>Michelle Obama's inspiring life story and journey.</p>
+                            <p>By Michelle Obama. The inspiring life story and journey of the former First Lady of the United States.</p>
                             <a href="https://icrrd.com/public/media/15-05-2021-133541Becoming-Michelle-Obama.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="books-section">
+                <h2>Indian History & Freedom Struggle</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71zq8SU7JkS._UF894,1000_QL80_.jpg" alt="India's Struggle for Independence" class="book-cover">
+                        <div class="book-info">
+                            <h3>India's Struggle for Independence</h3>
+                            <p>By Bipan Chandra. A comprehensive account of the freedom movement.</p>
+                            <a href="https://www.davcollegekanpur.ac.in/assets/ebooks/History/India%E2%80%99s%20Struggle%20for%20Independence%20Bipan%20chandra.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/61zZzKlLleL.jpg" alt="The Discovery of India" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Discovery of India</h3>
+                            <p>By Jawaharlal Nehru. A journey through India's rich history and culture.</p>
+                            <a href="https://library.bjp.org/jspui/bitstream/123456789/277/1/The-Discovery-Of-India-Jawaharlal-Nehru.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://www.mkgandhi.org/images/autobio-deluxe.jpg" alt="My Experiments with Truth" class="book-cover">
+                        <div class="book-info">
+                            <h3>An Autobiography</h3>
+                            <p>By M.K. Gandhi. The life story and philosophies of the Mahatma.</p>
+                            <a href="https://www.mkgandhi.org/ebks/An-Autobiography.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/613tStqIj3L._UF1000,1000_QL80_.jpg" alt="Why I Am an Atheist" class="book-cover">
+                        <div class="book-info">
+                            <h3>Why I Am an Atheist</h3>
+                            <p>By Bhagat Singh. A powerful essay on reason and revolution from the famed freedom fighter.</p>
+                            <a href="hhttps://theanarchistlibrary.org/mirror/b/bs/bhagat-singh-why-i-am-an-atheist.c5.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                     <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71sBeOnhUcL.jpg" alt="Veer Savarkar" class="book-cover">
+                        <div class="book-info">
+                            <h3>Veer Savarkar</h3>
+                            <p>By Uday Mahurkar. The man who could have prevented partition.</p>
+                            <a href="https://sanatanshop.com/wp-content/uploads/2022/03/veer_savarkar_intro_mar.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="books-section">
+                <h2>Indian Polity & Economy</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/51lPqmU-rDL._UF1000,1000_QL80_.jpg" alt="Indian Economy by Ramesh Singh" class="book-cover">
+                        <div class="book-info">
+                            <h3>Indian Economy</h3>
+                            <p>By Ramesh Singh. A key text for understanding the Indian economy, widely read by civil service aspirants.</p>
+                            <a href="https://www.jsscacs.edu.in/sites/default/files/Files/Indian_Economy_Ramesh_Singh_7e_0.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81FkC68evPL._UF1000,1000_QL80_.jpg" alt="Economic Survey of India" class="book-cover">
+                        <div class="book-info">
+                            <h3>Economic Survey of India</h3>
+                            <p>By Govt. of India. The official annual report on the state of India's economy.</p>
+                            <a href="https://www.indiabudget.gov.in/economicsurvey/doc/echapter.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71L75HlZsNL.jpg" alt="India Unbound" class="book-cover">
+                        <div class="book-info">
+                            <h3>India Unbound</h3>
+                            <p>By Gurcharan Das. A narrative of India's economic journey from independence to a global powerhouse.</p>
+                            <a href="https://inspiredforias.wordpress.com/wp-content/uploads/2017/06/india-unbound-by-gurcharan-das.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                     <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71CrTyKsazL.jpg" alt="Indian Polity by M. Laxmikanth" class="book-cover">
+                        <div class="book-info">
+                            <h3>Indian Polity</h3>
+                            <p>By M. Laxmikanth. Considered the 'bible' for Indian civil services preparation on the topic of polity.</p>
+                            <a href="https://blogmedia.testbook.com/kmat-kerala/wp-content/uploads/2023/06/indian-polity-4024d1bc.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://store.lexisnexis.in/image/cache/catalog/9788119403721-397x397.jpg" alt="Introduction to the Constitution of India by D.D. Basu" class="book-cover">
+                        <div class="book-info">
+                            <h3>Introduction to the Constitution of India</h3>
+                            <p>By D.D. Basu. A classic, scholarly work on the Indian Constitution.</p>
+                            <a href="https://blogmedia.testbook.com/kmat-kerala/wp-content/uploads/2023/06/indian-polity-by-dd-bashu-edd349fb.pdf" class="read-button" target="_blank">Read Now</a>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section class="books-section">
-                <h2>Literary Novels</h2>
+                <h2>Literary & Philosophical Fiction</h2>
                 <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71aFt4+OTOL._AC_UF1000,1000_QL80_.jpg" alt="The Alchemist" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Alchemist</h3>
+                            <p>By Paulo Coelho. A philosophical story about a shepherd boy who journeys in search of treasure.</p>
+                            <a href="https://icrrd.com/public/media/15-05-2021-084550The-Alchemist-Paulo-Coelho.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                     <div class="book-card">
+                        <img src="https://yourbookshelf.net/wp-content/uploads/2024/02/254775YB-THE-GOD-OF-SMALL-THINGS.jpg.webp" alt="The God of Small Things" class="book-cover">
+                        <div class="book-info">
+                            <h3>The God of Small Things</h3>
+                            <p>By Arundhati Roy. This Booker Prize-winning novel tells the story of fraternal twins in Kerala, India.</p>
+                            <a href="https://vidyaprabodhinicollege.edu.in/VPCCECM/ebooks/ENGLISH%20LITERATURE/Arundhati%20Roy/Arundhati%20Roy%20-%20The%20God%20of%20Small%20Things.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
                     <div class="book-card">
                         <img src="https://m.media-amazon.com/images/I/81gepf1eMqL._AC_UF1000,1000_QL80_.jpg" alt="To Kill a Mockingbird" class="book-cover">
                         <div class="book-info">
                             <h3>To Kill a Mockingbird</h3>
-                            <p>A gripping story about justice and morality in the deep South.</p>
+                            <p>By Harper Lee. A gripping story about justice and morality in the deep South of America.</p>
                             <a href="https://www.raio.org/TKMFullText.pdf" class="read-button" target="_blank">Read Now</a>
                         </div>
                     </div>
@@ -373,7 +489,7 @@
                         <img src="https://m.media-amazon.com/images/M/MV5BMTA1NDQ3NTcyOTNeQTJeQWpwZ15BbWU3MDA0MzA4MzE@._V1_.jpg" alt="Pride and Prejudice" class="book-cover">
                         <div class="book-info">
                             <h3>Pride and Prejudice</h3>
-                            <p>Classic romance set against the backdrop of societal norms.</p>
+                            <p>By Jane Austen. A classic romance set against the backdrop of societal norms in 19th-century England.</p>
                             <a href="https://giove.isti.cnr.it/demo/eread/Libri/joy/Pride.pdf" class="read-button" target="_blank">Read Now</a>
                         </div>
                     </div>
@@ -381,16 +497,92 @@
                         <img src="https://m.media-amazon.com/images/I/71rpa1-kyvL._AC_UF1000,1000_QL80_.jpg" alt="1984" class="book-cover">
                         <div class="book-info">
                             <h3>1984</h3>
-                            <p>A dystopian novel exploring totalitarianism and surveillance.</p>
-                            <a href="https://rauterberg.employee.id.tue.nl/lecturenotes/DDM110%20CAS/Orwell-1949%201984.pdf" class="read-button" target="_blank">Read Now</a>
+                            <p>By George Orwell. A classic dystopian novel exploring totalitarianism, mass surveillance, and propaganda.</p>
+                            <a href="https://www.clarkchargers.org/ourpages/auto/2015/3/10/50720556/1984.pdf" class="read-button" target="_blank">Read Now</a>
                         </div>
                     </div>
                     <div class="book-card">
                         <img src="https://m.media-amazon.com/images/I/71X7HnBk6VL._UF1000,1000_QL80_.jpg" alt="The Great Gatsby" class="book-cover">
                         <div class="book-info">
                             <h3>The Great Gatsby</h3>
-                            <p>The story of love, wealth, and the American Dream in the Jazz Age.</p>
-                            <a href="https://www.planetebook.com/free-ebooks/the-great-gatsby.pdf" class="read-button" target="_blank">Read Now</a>
+                            <p>By F. Scott Fitzgerald. The story of love, wealth, and the American Dream in the Jazz Age.</p>
+                            <a href="https://ct02210097.schoolwires.net/site/handlers/filedownload.ashx?moduleinstanceid=26616&dataid=28467&FileName=The%20Great%20Gatsby.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="books-section">
+                <h2>Fantasy, Sci-Fi & Mystery</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71XqqKTZz7L._AC_UF1000,1000_QL80_.jpg" alt="Harry Potter" class="book-cover">
+                        <div class="book-info">
+                            <h3>Harry Potter and the Sorcerer's Stone</h3>
+                            <p>By J.K. Rowling. A young wizard's journey begins in this magical adventure.</p>
+                            <a href="https://hazidesaratcollege.ac.in/library/uploads/85jkr_harrypotter_1.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81mCE+uclxL._UF1000,1000_QL80_.jpg" alt="The Hobbit" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Hobbit</h3>
+                            <p>By J.R.R. Tolkien. A tale of a small hobbit on an unexpected journey to reclaim treasure.</p>
+                            <a href="https://rsd2-alert-durden-reading-room.weebly.com/uploads/6/7/1/6/6716949/the_hobbit_tolkien.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                     <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81ym3QUd3KL._AC_UF1000,1000_QL80_.jpg" alt="Dune" class="book-cover">
+                        <div class="book-info">
+                            <h3>Dune</h3>
+                            <p>By Frank Herbert. A landmark science fiction epic of politics, religion, and power on a desert planet.</p>
+                            <a href="https://dn720004.ca.archive.org/0/items/english-collections-1/Dune%20Messiah%20-%20Frank%20Herbert.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                     <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/71RGiu1YwDL._UF894,1000_QL80_.jpg" alt="And Then There Were None" class="book-cover">
+                        <div class="book-info">
+                            <h3>And Then There Were None</h3>
+                            <p>By Agatha Christie. Ten strangers are lured to an island and picked off one by one. A masterpiece of mystery.</p>
+                            <a href="http://pustaka.unp.ac.id/file/abstrak_kki/EBOOKS/And%20Then%20There%20Were%20None.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="books-section">
+                <h2>Religious & Philosophical Texts</h2>
+                <div class="book-grid">
+                    <div class="book-card">
+                        <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/book/r/3/u/bhagavad-gita-original-imah3j8x2bvhghd5.jpeg?q=90&crop=false" alt="Bhagavad Gita" class="book-cover">
+                        <div class="book-info">
+                            <h3>Bhagavad Gita</h3>
+                            <p>An ancient Indian scripture offering profound insights on duty, action, and the nature of existence.</p>
+                            <a href="https://ignca.gov.in/Asi_data/279.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://m.media-amazon.com/images/I/81+xYHww3NL._AC_UF1000,1000_QL80_.jpg" alt="The Quran" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Quran</h3>
+                            <p>The central religious text of Islam, believed to be a revelation from God (Allah).</p>
+                            <a href="https://www.pdfquran.com/download/big/big-quran.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1631965680i/280111.jpg" alt="The Bible" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Bible</h3>
+                            <p>A collection of religious texts or scriptures sacred to Christians, Jews, Samaritans, and others.</p>
+                            <a href="https://www.churchofjesuschrist.org/bc/content/shared/content/english/pdf/language-materials/83512_eng.pdf" class="read-button" target="_blank">Read Now</a>
+                        </div>
+                    </div>
+                     <div class="book-card">
+                        <img src="https://img.yumpu.com/15772912/1/500x640/dhammapadapdf.jpg" alt="The Dhammapada" class="book-cover">
+                        <div class="book-info">
+                            <h3>The Dhammapada</h3>
+                            <p>A collection of sayings of the Buddha in verse form and one of the most widely read Buddhist scriptures.</p>
+                            <a href="https://www.buddhanet.net/pdf_file/scrndhamma.pdf" class="read-button" target="_blank">Read Now</a>
                         </div>
                     </div>
                 </div>
